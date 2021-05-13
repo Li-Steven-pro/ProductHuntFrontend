@@ -1,9 +1,6 @@
+
 .product-card {
-    border-radius: var(--card-border);
-    max-width: 600px;
-    width: 100%;
-    height: 100%;
-    margin: 0;
+    margin: 7px;
     overflow: hidden;
     cursor: pointer;
   }
@@ -24,9 +21,9 @@
     height: 100%;
     width: 100%;
   }
-  mat-card img {
+  mat-card img{
     object-fit: cover;
-    height: 80%;
+    width: 100%; 
   }
   mat-card-header {
     display: flex;
@@ -40,11 +37,12 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    margin: 0;
+    margin: 5px;
   }
   .subtitle {
     flex: 1;
-    align-self: flex-end;
-    margin: 0;
+    align-self: flex-start;
+    overflow: hidden;
+    margin: 5px;
   }
   

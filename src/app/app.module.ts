@@ -14,16 +14,19 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { ProductHuntDateComponent } from './view/product-hunt-date/product-hunt-date.component';
-//import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
-import {MatGridListModule} from '@angular/material/grid-list';
 import { MatMomentDateModule} from '@angular/material-moment-adapter';
+import { ProductItemComponent } from './component/product-item/product-item.component';
+import { FlexLayoutModule } from "@angular/flex-layout";
+import { MatChipsModule} from "@angular/material/chips"
+
 
 @NgModule({
   declarations: [
     AppComponent,
     CardComponent,
     ProductHuntDateComponent,
+    ProductItemComponent,
   ],
   imports: [
     CommonModule,
@@ -33,14 +36,14 @@ import { MatMomentDateModule} from '@angular/material-moment-adapter';
     HttpClientModule,
     BrowserAnimationsModule,
     MatDatepickerModule,
-    //MatNativeDateModule,
     MatMomentDateModule,
     MatCardModule,
     MatInputModule,
     MatFormFieldModule,
     MatIconModule,
     MatButtonModule,
-    MatGridListModule
+    FlexLayoutModule,
+    MatChipsModule
   ],
   providers: [MatDatepickerModule],
   bootstrap: [AppComponent],
