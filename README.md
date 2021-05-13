@@ -1,6 +1,6 @@
 # ProductHuntFrontend
 
-Frontend application to retieve products from a specific day. It displays a list of product and a chart (products/topic)
+Frontend application which retieves products from a specific day. It displays a list of product and a chart (products/topic)
 
 ## Prerequisites
 
