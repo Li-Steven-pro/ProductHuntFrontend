@@ -1,11 +1,11 @@
 export interface Post{
-    "name" : String, 
-    "tagline": String,
+    "name" : string, 
+    "tagline": string,
     "topics" : Array<Topic>,
-    "redirect_link" : String,
-    "thumbnail" : String
+    "redirect_link" : string,
+    "thumbnail" : string
 }
 
 interface Topic{
-    "name" : String
+    "name" : string
 }
