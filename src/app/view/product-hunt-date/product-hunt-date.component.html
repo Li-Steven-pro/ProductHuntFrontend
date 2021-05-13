@@ -7,4 +7,10 @@
         <mat-datepicker #picker ></mat-datepicker>
     </mat-form-field>
     <button mat-button (click)="fetchAPI()">Get Products</button>
+    <mat-grid-list cols="5" >
+        <mat-grid-tile
+            *ngFor="let p of posts">
+            <app-card [post]=p></app-card>
+        </mat-grid-tile>
+      </mat-grid-list>
 </div>

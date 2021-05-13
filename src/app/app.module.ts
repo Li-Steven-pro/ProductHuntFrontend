@@ -16,7 +16,8 @@ import { MatInputModule } from '@angular/material/input';
 import { ProductHuntDateComponent } from './view/product-hunt-date/product-hunt-date.component';
 //import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
-import { MatMomentDateModule, MomentDateModule } from '@angular/material-moment-adapter';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { MatMomentDateModule} from '@angular/material-moment-adapter';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { MatMomentDateModule, MomentDateModule } from '@angular/material-moment-
     MatInputModule,
     MatFormFieldModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatGridListModule
   ],
   providers: [MatDatepickerModule],
   bootstrap: [AppComponent],
