@@ -19,21 +19,24 @@
                 </mat-icon>
             </button>
         </div>
-        <button mat-button (click)="fetchAPI()">Get Products</button>
+        <button mat-raised-button (click)="fetchAPI()">Get Products</button>
     </div>
     <app-topic-chart [chartOptions]="chartOptions" *ngIf="showChart"></app-topic-chart>
-    <table style="width:100%">
-        <tr>
+    <table style="width:100%" >
+        <tr [hidden]="!(posts.length > 0)">
             <mat-paginator #paginator [length]="posts.length"
                 [pageSize]="pageSize"
                 [pageSizeOptions]="pageSizeOptions"
                 (page)="onPageChange($event)">
             </mat-paginator>
         </tr>
-        <tr>
+        <tr *ngIf="posts.length > 0; else noPosts">
             <th>
                 <app-product-item *ngFor="let post of postsPagination" [post]="post"></app-product-item>
             </th>
         </tr>
     </table>
+    <ng-template #noPosts>
+        
+    </ng-template>
 </div>

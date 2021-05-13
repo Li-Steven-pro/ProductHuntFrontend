@@ -5,7 +5,7 @@ import * as moment from 'moment';
 import { Moment } from 'moment';
 import { MY_FORMATS} from 'src/app/model/date-format.constant';
 import { Post } from 'src/app/model/posts.interface';
-import { ApiService } from 'src/app/service/api.service';
+import { ApiService, ResComp } from 'src/app/service/api/api.service';
 
 @Component({
   selector: 'app-product-hunt-date',
@@ -37,30 +37,15 @@ export class ProductHuntDateComponent {
     this.date = moment()
   }
 
-  fetchAPI(){
-    this.apiService.getProductsByDate(this.DateToString()).then((res)=>{
-      if(res.status == 200){
-        
-        this.posts = res.response.results
-        this.paginator.firstPage();
-        this.postsPagination = this.posts.slice(0,this.pageSize)
-        this.setChartOption(this.setChartData(this.posts))
-      }
-    })
-  }
-  setChartData(data : Array<Post>): Map<string,number>{
-    let chartData = new Map<string,number>()
-    data.forEach((post)=>{
-      post.topics.forEach((topic)=>{
-        if(chartData.has(topic.name)){
-          chartData.set(topic.name,chartData.get(topic.name)! +1) 
-        }else{
-          chartData.set(topic.name,1)
-        }
-      })
-    })
-    
-    return chartData
+  async fetchAPI(){
+    let statTopics : Map<string,number>;
+    let response : ResComp = await this.apiService.getProductsByDate(this.DateToString())
+    if(response.name.length > 0){
+      this.posts = response.name
+      this.paginator.firstPage();
+      this.postsPagination = this.posts.slice(0,this.pageSize)
+      this.setChartOption(response.statTopic)
+    }
   }
 
   DateToString(){
@@ -72,11 +57,9 @@ export class ProductHuntDateComponent {
 
   dayBefore(){
     this.date.add(-1,'days');
-    console.log(this.date);
   }
   dayAfter(){
     this.date.add(1,'days');
-    console.log(this.date);
   }
 
   onPageChange($event : PageEvent){
@@ -90,7 +73,6 @@ export class ProductHuntDateComponent {
         topics.push(topic[0])
         values.push(topic[1])
     }
-    console.log(topics, values)
     this.chartOptions = {
       series: [
         {
