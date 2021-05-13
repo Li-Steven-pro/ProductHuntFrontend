@@ -5,6 +5,7 @@ import { Moment } from 'moment';
 import { MY_FORMATS} from 'src/app/model/date-format.constant';
 import { Post } from 'src/app/model/posts.interface';
 import { ApiService } from 'src/app/service/api.service';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-product-hunt-date',
@@ -17,9 +18,50 @@ import { ApiService } from 'src/app/service/api.service';
 export class ProductHuntDateComponent {
 
   posts : Array<Post> = new Array()
+
   date : Moment;
-  constructor(private apiService : ApiService) { 
+  breakpoint: number;
+
+  gridByBreakpoint = {
+    xl: 5,
+    lg: 4,
+    md: 3,
+    sm: 3,
+    xs: 2
+  }
+
+  constructor(
+    private apiService : ApiService,
+    private breakpointObserver: BreakpointObserver
+  ){ 
     this.date = moment()
+    this.breakpoint = 5;
+
+    this.breakpointObserver.observe([
+      Breakpoints.XSmall,
+      Breakpoints.Small,
+      Breakpoints.Medium,
+      Breakpoints.Large,
+      Breakpoints.XLarge,
+    ]).subscribe(result => {
+      if (result.matches) {
+        if (result.breakpoints[Breakpoints.XSmall]) {
+          this.breakpoint = this.gridByBreakpoint.xs;
+        }
+        if (result.breakpoints[Breakpoints.Small]) {
+          this.breakpoint = this.gridByBreakpoint.sm;
+        }
+        if (result.breakpoints[Breakpoints.Medium]) {
+          this.breakpoint = this.gridByBreakpoint.md;
+        }
+        if (result.breakpoints[Breakpoints.Large]) {
+          this.breakpoint= this.gridByBreakpoint.lg;
+        }
+        if (result.breakpoints[Breakpoints.XLarge]) {
+          this.breakpoint = this.gridByBreakpoint.xl;
+        }
+      }
+    });
   }
 
   fetchAPI(){
