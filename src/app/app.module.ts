@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { CardComponent } from './component/card/card.component';
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatDatepickerModule} from '@angular/material/datepicker';
 import { MatCardModule } from '@angular/material/card';
@@ -19,14 +18,16 @@ import { MatMomentDateModule} from '@angular/material-moment-adapter';
 import { ProductItemComponent } from './component/product-item/product-item.component';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { MatChipsModule} from "@angular/material/chips"
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { TopicChartComponent } from './component/topic-chart/topic-chart.component';
 
-
+import { NgApexchartsModule } from "ng-apexcharts";
 @NgModule({
   declarations: [
     AppComponent,
-    CardComponent,
     ProductHuntDateComponent,
     ProductItemComponent,
+    TopicChartComponent,
   ],
   imports: [
     CommonModule,
@@ -43,7 +44,9 @@ import { MatChipsModule} from "@angular/material/chips"
     MatIconModule,
     MatButtonModule,
     FlexLayoutModule,
-    MatChipsModule
+    MatChipsModule,
+    MatPaginatorModule,
+    NgApexchartsModule
   ],
   providers: [MatDatepickerModule],
   bootstrap: [AppComponent],
