@@ -2,6 +2,9 @@
 
 Frontend application which retieves products from a specific day. It displays a list of product and a chart (products/topic)
 
+![sceen1](./Capture%20d’écran%202021-05-14%20à%2010.21.07.png)
+![sceen2](./Capture%20d’écran%202021-05-14%20à%2010.21.20.png)
+
 ## Prerequisites
 
 ### Installation
