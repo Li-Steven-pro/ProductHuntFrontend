@@ -9,6 +9,8 @@ import { NotificationService } from './service/notification/notification.service
 })
 export class AppComponent {
   title = 'ProductHunt Frontend';
+
+  // Open snackbar using a observer 
   constructor(
     private notificationService: NotificationService, private snackBar: MatSnackBar
   ) {
