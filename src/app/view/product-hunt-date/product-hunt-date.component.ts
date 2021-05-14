@@ -18,25 +18,27 @@ import { ApiService, ResComp } from 'src/app/service/api/api.service';
 export class ProductHuntDateComponent {
   @ViewChild('paginator') paginator!: MatPaginator;
 
+  // Data for user input, query, and posts result
   posts : Array<Post> = new Array()
   date : Moment;
 
+  // Paginator information : posts to show 
   postsPagination : Array<Post> = new Array()
   pageSize = 10;
   pageSizeOptions: number[] = [5, 10, 25, 100];
 
+  // Chart
   showChart : boolean = false;
   chartOptions? : any;
 
-  // MatPaginator Output
-  pageEvent?: PageEvent;
-
   constructor(
+    //Service using query to retrieve posts
     private apiService : ApiService,
   ){ 
     this.date = moment()
   }
 
+  // Get data from backend
   async fetchAPI(){
     let statTopics : Map<string,number>;
     let response : ResComp = await this.apiService.getProductsByDate(this.DateToString())
@@ -48,24 +50,31 @@ export class ProductHuntDateComponent {
     }
   }
 
+  // Format for query
   DateToString(){
     return this.date.format("YYYY-MM-DD") 
   }
+
+  // Format to render for page
   DateToRender(){
     return this.date.format("DD/MM/YYYY") 
   }
 
+  // Set a day before in the date
   dayBefore(){
     this.date.add(-1,'days');
   }
+  //Set a day after in the date
   dayAfter(){
     this.date.add(1,'days');
   }
 
+  // Change the posts list to show when the paginator state change
   onPageChange($event : PageEvent){
     this.postsPagination = this.posts.slice($event.pageIndex*$event.pageSize,$event.pageIndex*$event.pageSize + $event.pageSize)
   }
 
+  // Set the chart data 
   setChartOption(chartData : Map<string, number>){
     let topics = new Array<string>()
     let values = new Array<number>() 

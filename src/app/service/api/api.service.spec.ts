@@ -24,14 +24,14 @@ describe('ApiService', () => {
 
   it('Backend call', (done) => {
     service.getProductsByDate("2021-02-03").then((res)=>{
-      expect(res.status).toBe(200);
+      expect(res.name.length).toBeGreaterThan(0);
       done();
     });
   });
 
   it('Bad call ', (done) => {
     service.getProductsByDate("202").then((res)=>{
-      expect(res.status).toBe(400);
+      expect(res.name.length).toBe(0);
       done();
     });
   })

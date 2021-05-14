@@ -1,4 +1,6 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ApiService } from 'src/app/service/api/api.service';
 
 import { ProductHuntDateComponent } from './product-hunt-date.component';
 
@@ -8,7 +10,9 @@ describe('ProductHuntDateComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProductHuntDateComponent ]
+      declarations: [ ProductHuntDateComponent ],
+        imports: [HttpClientModule],
+        providers : [ApiService]
     })
     .compileComponents();
   });

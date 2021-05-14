@@ -18,11 +18,15 @@ export class ApiService {
   private baseUrl : string;
 
   constructor(private http : HttpClient,private notificationService: NotificationService,) {
+    // Import the api url from environment
     this.baseUrl = environment.apiUrl;
   }
 
+  // Return a ResComp object to the component 
   async getProductsByDate(date : string): Promise<ResComp> {
+    // Initialization for the return
     let resComp : ResComp = {name:[], statTopic : new Map()};
+    // Query to backend
     return await this.http.get<ResponsePost>(this.baseUrl + environment.queryDatePath + date).toPromise().then((res)=>{
       if(res.status == 200){
         resComp ={
@@ -41,6 +45,7 @@ export class ApiService {
     })
   }
 
+  // return a Map ("topic" : number of products associated with this topic)
   getStatTopic(data : Array<Post>): Map<string,number>{
     let chartData = new Map<string,number>()
     data.forEach((post)=>{
