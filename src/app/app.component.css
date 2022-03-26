@@ -1,0 +1,13 @@
+h1{
+    justify-content: center;
+    font-size: 30px;
+    font-family: 'Courier New', Courier, monospace;
+}
+.header-title{
+    margin: 10px;
+}
+
+img{
+    height: 100px;
+    width: 100px;
+}
