@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   // Local server
-  apiUrl : "http://localhost:8080",
+  apiUrl : "",
   // End point api
   queryDatePath : "/api/rest/"
 };
